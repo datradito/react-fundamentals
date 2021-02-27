@@ -18,18 +18,25 @@ import '../box-styles.css'
 // const largeBox = <div className="box box--large" style={{backgroundColor: "orange" }}>large orange box</div>
 
 const Box = ( props) => {
-  const {className , style, txt} = props
+  const {size , style, txt} = props
+  const boxSize = {
+    small:"box--small",
+    medium:"box--medium",
+    large:"box--large"
+  }
+  console.log(boxSize[size])
+
   return (
-    <div className={`${className} box`} style={{...style, fontStyle: "italic"}}>
+    <div className={`${boxSize[size]} box`} style={{...style, fontStyle: "italic"}}>
       {txt}
     </div>
   )}
 function App() {
   return (
     <div>
-      <Box className="box--small" style={{ backgroundColor: "lightblue" }} txt="small lightblue box"/>
-      <Box className="box--medium" style={{ backgroundColor: "pink" }} txt="medium pink box"/>
-      <Box className="box--large" style={{ backgroundColor: "orange" }} txt="large orange box"/>
+      <Box size="small" style={{ backgroundColor: "lightblue" }} txt="small lightblue box"/>
+      <Box size="medium" style={{ backgroundColor: "pink" }} txt="medium pink box"/>
+      <Box size="large" style={{ backgroundColor: "orange" }} txt="large orange box"/>
     </div>
   )
 }
