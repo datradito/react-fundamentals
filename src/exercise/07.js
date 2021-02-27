@@ -2,7 +2,7 @@
 // http://localhost:3000/isolated/exercise/07.js
 
 import * as React from 'react'
-import { isTaggedTemplateExpression } from 'typescript'
+
 
 const allItems = [
   {id: 'apple', value: '🍎 apple'},
