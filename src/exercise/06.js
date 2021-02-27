@@ -25,24 +25,27 @@ function UsernameForm({onSubmitUsername}) {
 
   const handleChange = (e) => {
     const value = e.target.value;
-    // const isValid = value === value.toLowerCase();
-    // setError(isValid ? null : 'Username must be lower case');
-    setUsername(value.toLowerCase());
+    const isValid = value === value.toLowerCase();
+    setError(isValid ? null : 'Username must be lower case');
+    // setUsername(value.toLowerCase());
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.dir(e.target)
     console.log(inputRef.current.value)
+    //Another way to access de value from the DOM
+    console.log(e.target.elements.usernameInput.value)
     onSubmitUsername(inputRef.current.value)
   }
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>Username:</label>
-        <input ref={inputRef} onChange={handleChange} value={username} type="text" />
-        {!!error ? <span role='alert'>{error}</span> : null}
+        <label htmlFor="usernameInput" >Username:</label>
+        <input id="usernameInput" ref={inputRef} onChange={handleChange} type="text" />
+        <div style={{color:'rebeccapurple'}}>{error}</div>
       </div>
-      <button type="submit" disabled={!!error}>Submit</button>
+      <button type="submit" disabled={Boolean(error)}>Submit</button>
     </form>
   )
 }
